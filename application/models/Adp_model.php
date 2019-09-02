@@ -37,4 +37,26 @@ class Adp_model extends CI_Model{
 	   
 	 return json_encode($data_obj);
 	}
+	public function load_plugin($plugin=FALSE,$type=FALSE){
+		$plugin_db = file_get_contents('./db.json');
+		// $this->load->helper('file');
+		if($plugin){
+			if(gettype($plugin) == 'string'){
+			
+			return json_decode(json_decode(json_decode($plugin_db)->checked)->$plugin)->$type;
+		}else{
+			$row_data = '';
+			foreach ($plugin as $single_plugin) {
+				 $row_data .= json_decode(json_decode(json_decode($plugin_db)->checked)->$single_plugin)->$type;
+			}
+			return explode(',',$row_data);
+		}
+			
+		}else{
+			echo $plugin_db;
+		}
+		
+
+    
+	}
 }

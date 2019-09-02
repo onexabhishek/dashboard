@@ -1,4 +1,14 @@
- 	let obj = new Array();
+ var datavb;
+ 	$.post('./adp/init_plugin',(data)=>{
+    // let plugin_arrays = JSON.parse(data);
+    // for(i in plugin_arrays){
+    //   console.log(plugin_arrays[i]);
+    // }
+
+  localStorage.setItem('active_plugins',JSON.parse(data).ative_plugins);
+  localStorage.setItem('checked',JSON.parse(data).checked);
+})
+  let obj = new Array();
   let lists_obj = new Array();
   let data_obj = new Object();
   let listsFormate = new Object();
@@ -66,7 +76,8 @@ class Media_gallery {
     // localStorage.setItem('mime',true);
   }
   setPackage(id,action,formate,parent){
-    if(typeof localStorage.getItem('checked') != 'undefined'){
+    if(typeof localStorage.getItem('checked') != 'undefined' && localStorage.getItem('checked') != ''){
+  
       bundleNodes = JSON.parse(localStorage.getItem('checked'));
     }
     if(typeof bundleNodes[parent] != 'undefined'){
@@ -110,6 +121,9 @@ class Media_gallery {
   }
   getPackage(){
     return localStorage.getItem('checked');
+  }
+  getPlugins(){
+    return localStorage.getItem('active_plugins');
   }
   isRoot(){
     if(this.getBase() == this.getDir()){
@@ -245,7 +259,7 @@ class Media_gallery {
     }
   }
   activate_plugins(){
-    $.post('./adp/info_db',{data : media_gallery.getPackage()},function(data){
+    $.post('./adp/info_db',{checked : media_gallery.getPackage(),ative_plugins:media_gallery.getPlugins()},function(data){
       console.log(data);
     })
   }
@@ -279,6 +293,7 @@ function check_data(){
 }
 function check_file(){
   let current_plugin = localStorage.getItem('current_plugin');
+  if(localStorage.getItem('checked') != ''){
   let active_files = JSON.parse(localStorage.getItem('checked'));
   if(typeof active_files[current_plugin] != 'undefined'){
     let js_arry = JSON.parse(active_files[current_plugin]).js.split(',');
@@ -290,7 +305,7 @@ function check_file(){
   }
   console.log(active_files);
 
-  
+  }
 }
 function ativate_plugin(id){
   // console.log(id);
@@ -301,4 +316,9 @@ function ativate_plugin(id){
 }
 $('.activate-plugins').click(()=>{
   media_gallery.activate_plugins();
+})
+$('.bolt').click(()=>{
+  $.post('./adp/init_plugin/DateJS',(data)=>{
+    console.log(data);
+  })
 })

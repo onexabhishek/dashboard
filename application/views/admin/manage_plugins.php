@@ -61,6 +61,7 @@ a.disabled {
                <div class="x_content">
                   <br />
                   <button class="btn btn-success">Home</button>
+                  <button class="btn btn-success bolt">tweak</button>
                   <button class="btn btn-primary pull-right media-back">Back</button>
                   <table class="table table-striped table-bordered table-hover">
                   	<thead>

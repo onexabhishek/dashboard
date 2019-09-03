@@ -50,8 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'pages';
-$route['services/add'] = 'services/add';
-$route['services'] = 'services/index';
+$route['category/add'] = 'category/add';
+$route['category'] = 'category/index';
 $route['adp'] = 'adp/plugins';
 $route['adp/(:any)'] = 'adp/$1';
 $route['404_override'] = '';

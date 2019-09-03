@@ -41,6 +41,7 @@ if(isset($scripts)){
 <script src="<?php echo base_url(); ?>vendors/pdfmake/build/vfs_fonts.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
 
 <script src="<?php echo base_url(); ?>build/js/custom.min.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
+<script src="<?php echo base_url(); ?>build/js/main.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
 <script src="<?php echo base_url(); ?>build/js/plugins.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
 
 <script src="<?php echo base_url(); ?>build/js/rocket-loader.min.js" data-cf-settings="59f3a9c0ff1fd00403ef800b-|49" defer=""></script></body>

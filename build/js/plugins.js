@@ -1,5 +1,4 @@
- var datavb;
- 	$.post('./adp/init_plugin',(data)=>{
+ $.post('./adp/init_plugin',(data)=>{
     // let plugin_arrays = JSON.parse(data);
     // for(i in plugin_arrays){
     //   console.log(plugin_arrays[i]);

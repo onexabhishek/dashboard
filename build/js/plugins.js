@@ -296,7 +296,7 @@ function check_file(){
   if(localStorage.getItem('checked') != ''){
   let active_files = JSON.parse(localStorage.getItem('checked'));
   if(typeof active_files[current_plugin] != 'undefined'){
-    let js_arry = JSON.parse(active_files[current_plugin]).js.split(',');
+    let js_arry = typeof JSON.parse(active_files[current_plugin]).js != 'undefined' ? JSON.parse(active_files[current_plugin]).js.split(',') : [];
     for(let i=0;i<js_arry.length;i++){
       $("input[data-id|='"+js_arry[i]+"']").iCheck('check');
     }

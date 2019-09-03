@@ -3,16 +3,10 @@ class Adp extends CI_Controller{
 	public function plugins(){
 		$this->load->model('adp_model');
 		$data['title'] = 'Manage Plugins';
-		$meta['stylesheets'] = [
-			'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css',
-			'vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css',
-			'vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css',
-			'vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css',
-			'vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css',
-			'vendors/switchery/dist/switchery.min.css'
-		];
-
-		$script = $this->adp_model->load_plugin(['bootstrap','Flot','bootstrap-daterangepicker','bootstrap-wysiwyg','jquery.hotkeys','google-code-prettify','jquery.tagsinput','switchery','select2','parsleyjs','devbridge-autocomplete','starrr'],'js');
+		$styles = $this->adp_model->load_plugin(['datatables.net-bs','datatables.net-buttons-bs','datatables.net-fixedheader-bs','datatables.net-responsive-bs','datatables.net-scroller-bs','switchery'],'css');
+		$meta['stylesheets'] = $styles;
+		$this->output->cache(15);
+		$script = $this->adp_model->load_plugin(['moment','bootstrap-daterangepicker','bootstrap-wysiwyg','jquery.hotkeys','google-code-prettify','jquery.tagsinput','switchery','select2','parsleyjs','devbridge-autocomplete','starrr'],'js');
 		$script_data['scripts'] = $script;
 		
 		// $js = json_decode($this->adp_model->load_plugin('bootstrap'))->js;

@@ -45,11 +45,16 @@ class Adp_model extends CI_Model{
 			
 			return json_decode(json_decode(json_decode($plugin_db)->checked)->$plugin)->$type;
 		}else{
-			$row_data = '';
+			$row_data = [];
+			$flat_files = [];
 			foreach ($plugin as $single_plugin) {
-				 $row_data .= json_decode(json_decode(json_decode($plugin_db)->checked)->$single_plugin)->$type;
+				 $row_data []= explode(',',json_decode(json_decode(json_decode($plugin_db)->checked)->$single_plugin)->$type);
 			}
-			return explode(',',$row_data);
+			$recursive_array = new RecursiveIteratorIterator(new RecursiveArrayIterator($row_data));
+			foreach ($recursive_array as $flat_data) {
+				$flat_files [] = $flat_data;
+			}
+			return $flat_files;
 		}
 			
 		}else{

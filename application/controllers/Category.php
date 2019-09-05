@@ -25,6 +25,7 @@ class Category extends CI_Controller{
 		// $this->output->cache(15);
 		$script = $this->adp_model->load_plugin(['moment','bootstrap-daterangepicker','bootstrap-wysiwyg','jquery.hotkeys','google-code-prettify','jquery.tagsinput','switchery','select2','parsleyjs','devbridge-autocomplete','starrr'],'js');
 		$script_data['scripts'] = $script;
+		$data['alert'] = isset($_SESSION['alert']) ? $_SESSION['alert'] : '';
 		$this->load->view('admin/templates/header',$meta);
 		$this->parser->parse('admin/add-category',$data);
 		$this->load->view('admin/templates/footer',$script_data);
@@ -33,7 +34,9 @@ class Category extends CI_Controller{
 	public function add_category(){
 		if(isset($_REQUEST['form_insert'])){
 			$this->load->model('adp_crude');
-			$this->adp_crude->InsertRows($_REQUEST['table'],$_POST);
+			$res = $this->adp_crude->InsertRows($_REQUEST['table'],$_POST);
+			echo !$res ? '0' : '1';
+
 			
 		}
 	}

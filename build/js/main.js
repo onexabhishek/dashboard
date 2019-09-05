@@ -9,6 +9,12 @@ function insert_form(url,type,table){
 		url:url+'?form_insert=true&table='+table,
 		data:$(".form-insert").serializeArray(),
 		success:(success)=>{
+			if(success.trim() == 1){
+
+			}else if(success.trim() == 0){
+				console.log('success');
+				window.location.reload(true);
+			}
 			console.log(success);
 		},
 		error:(err)=>{

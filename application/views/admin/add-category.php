@@ -8,6 +8,9 @@
          <div class="title_left">
             <h3>{title}</h3>
          </div>
+         <div class="alert alert-<?php echo !empty($alert) ? $alert['type'] : '';?>">
+            <?php echo !empty($alert['msg']) ? $alert['msg'] :''; ?>
+         </div>
          <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                <div class="input-group">
@@ -45,7 +48,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                           <input type="text" id="category-name" name="category-name"  data-validate="notEmpty" required="required" class="form-control col-md-7 col-xs-12 adp-validate">
+                           <input type="text" id="category-name" name="name"  data-validate="notEmpty" required="required" class="form-control col-md-7 col-xs-12 adp-validate">
                         </div>
                      </div>
                      <div class="form-group">
@@ -58,7 +61,7 @@
                      <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Parent Category</label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
-                           <select class="form-control col-md-7 col-xs-12" name="parent-category">
+                           <select class="form-control col-md-7 col-xs-12" name="parent_category">
                               <option selected="selected">None</option>
                               <option>Option one</option>
                               <option>Option two</option>

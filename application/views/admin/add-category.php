@@ -40,19 +40,19 @@
                </div>
                <div class="x_content">
                   <br />
-                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left form-insert">
+                  <form action="<?php echo site_url('./category/add_category'); ?>" method="POST" class="form-horizontal form-label-left form-insert adp-validate-form" data-target="adp_post_category" novalidate>
                      <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                           <input type="text" id="category-name" name="category-name" required="required" class="form-control col-md-7 col-xs-12">
+                           <input type="text" id="category-name" name="category-name"  data-validate="notEmpty" required="required" class="form-control col-md-7 col-xs-12 adp-validate">
                         </div>
                      </div>
                      <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slug">Slug <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                           <input type="text" id="slug" name="slug" required="required" class="form-control col-md-7 col-xs-12">
+                           <input type="text" id="slug" name="slug" data-validate="notEmpty" required="required" class="form-control col-md-7 col-xs-12 adp-validate">
                         </div>
                      </div>
                      <div class="form-group">
@@ -90,7 +90,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                            <button class="btn btn-primary" type="button">Cancel</button>
                            <button class="btn btn-primary" type="reset">Reset</button>
-                           <button type="submit" class="btn btn-success">Submit</button>
+                           <button class="btn btn-success adp-submit">Submit</button>
                         </div>
                      </div>
                   </form>

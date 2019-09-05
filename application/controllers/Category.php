@@ -28,5 +28,13 @@ class Category extends CI_Controller{
 		$this->load->view('admin/templates/header',$meta);
 		$this->parser->parse('admin/add-category',$data);
 		$this->load->view('admin/templates/footer',$script_data);
+
+	}
+	public function add_category(){
+		if(isset($_REQUEST['form_insert'])){
+			$this->load->model('adp_crude');
+			$this->adp_crude->InsertRows($_REQUEST['table'],$_POST);
+			
+		}
 	}
 }

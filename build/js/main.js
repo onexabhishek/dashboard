@@ -1,3 +1,4 @@
+let siteUrl = window.location.protocol+'//'+window.location.hostname+'/dashboard/';
 $(".form-insert").on('submit',(e)=>{
 		e.preventDefault();
 		// console.log(e.target.action);
@@ -10,10 +11,11 @@ function insert_form(url,type,table){
 		data:$(".form-insert").serializeArray(),
 		success:(success)=>{
 			if(success.trim() == 1){
-
+				init_alert();
 			}else if(success.trim() == 0){
 				console.log('success');
-				window.location.reload(true);
+				init_alert();
+				// window.location.reload(true);
 			}
 			console.log(success);
 		},
@@ -23,6 +25,20 @@ function insert_form(url,type,table){
 	})
 }
 
+function init_alert(){
+	$.ajax({
+		type:'POST',
+		url:siteUrl+'adp/init_alert',
+		success:(success)=>{
+		let data = JSON.parse(success);
+			alert_msg(data.type,data.msg);
+		console.log(data);
+		},
+		error:(err)=>{
+			alert_msg('danger',err);
+		}
+	})	
+}
 
 let inp = $('.adp-validate');
  $.each(inp,(e,v) =>{

@@ -1,0 +1,51 @@
+
+.adp-alert {
+    position: fixed;
+    top: 20px;
+    z-index: 9999;
+    right: 0;
+    width: auto;
+    /*background: red;*/
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    padding: 15px 35px 10px 18px;
+}
+.adp-alert .btn-close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    color: #fff;
+    font-size: 29px;
+    font-weight: 700;
+    cursor:pointer;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+.adp-alert .adp-alert-msg span {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    top: 9px;
+    left:10px;
+}
+.adp-alert .adp-alert-msg {
+    margin-left: 4rem;
+    color: #fff;
+}
+.adp-info-msg-body span{
+    width:28px;
+}
+.alrt-bg-success{
+   background: #28a745 !important;
+}
+.alrt-bg-danger{
+    background-color: #dc3545!important;
+}
+.alrt-bg-warning{
+    background-color: #ffc107 !important;
+}
+.alrt-bg-info{
+    background-color: #17a2b8 !important;
+}

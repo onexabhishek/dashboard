@@ -15,7 +15,11 @@ class Category extends CI_Controller{
 		$this->parser->parse('admin/category',$data);
 		$this->load->view('admin/templates/footer',$script_data);
 	}
-	public function add(){
+	public function add($name=FALSE){
+		if($name){
+			$name = str_replace('-'," ",$name);
+			$data['data'] = '';
+		}
 		$this->load->library('parser');
 		$this->load->helper('url');
 		$this->load->model('adp_model');
@@ -25,7 +29,7 @@ class Category extends CI_Controller{
 		// $this->output->cache(15);
 		$script = $this->adp_model->load_plugin(['moment','bootstrap-daterangepicker','bootstrap-wysiwyg','jquery.hotkeys','google-code-prettify','jquery.tagsinput','switchery','select2','parsleyjs','devbridge-autocomplete','starrr'],'js');
 		$script_data['scripts'] = $script;
-		$data['alert'] = isset($_SESSION['alert']) ? $_SESSION['alert'] : '';
+		// $data['alert'] = isset($_SESSION['alert']) ? $_SESSION['alert'] : '';
 		$this->load->view('admin/templates/header',$meta);
 		$this->parser->parse('admin/add-category',$data);
 		$this->load->view('admin/templates/footer',$script_data);

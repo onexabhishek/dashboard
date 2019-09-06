@@ -41,4 +41,7 @@ class Adp extends CI_Controller{
 		}
 		
 	}
+	public function init_alert(){
+		echo isset($_SESSION['alert']) ? json_encode($_SESSION['alert']) : '';
+	}
 }

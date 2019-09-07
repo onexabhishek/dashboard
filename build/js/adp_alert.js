@@ -11,7 +11,7 @@ var info_addon = `<span class="input-group-addon" id="info_addon"></span>`;
 		var msg_saved = 'Thumbnail Saved Successfully';
 	let info_icons = {danger:'glyphicon-exclamation-sign',success:'glyphicon-ok'};
 	function info_body(priority){
-		return `<span class="glyphicon text-danger ${info_icons[priority]}" aria-hidden="true"></span>`;
+		return `<span class="glyphicon text-${priority} ${info_icons[priority]}" aria-hidden="true"></span>`;
 	}
 	function alert_msg(t,m){
 		   $('#adpAlertTrigger').remove();

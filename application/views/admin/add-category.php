@@ -101,6 +101,11 @@
             </div>
          </div>
       </div>
+       <?php
+      $table_data['table_columns'] = ['Name','Slug','Parent Category'];
+      $table_data['data_keys'] = ['name','slug','parent_category'];
+       $this->view('admin/templates/datatable',$table_data); ?>
+
 
    </div>
 </div>

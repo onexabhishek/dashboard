@@ -14,10 +14,23 @@ class Adp_crude extends CI_Model{
 			$this->session->set_flashdata('alert',['type'=>'danger','msg'=>$array['slug'].' Category Slug already exists']);
 			return false;
 		}else{
-			echo $this->db->insert($table,$array);
+			$response = $this->db->insert($table,$array);
 			$this->session->set_flashdata('alert',['type'=>'success','msg'=>$array['slug'].' Category Slug already exists','last_action_id'=>$this->db->insert_id()]);
+			return $response;
 		}
 		
+	}
+	public function getRows($table,$clause=FALSE){
+		if(isset($clause['select'])){
+			$this->db->select(implode(",",$clause['select']));
+		}
+
+		if(isset($clause['where'])){
+			$query = $this->db->get_where($table,$clause['where']);
+		}else{
+			$query = $this->db->get($table);
+		}
+		return $query->result_array();
 	}
 }
 

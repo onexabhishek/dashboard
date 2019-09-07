@@ -12,10 +12,9 @@ function insert_form(url,type,table){
 		success:(success)=>{
 			if(success.trim() == 1){
 				init_alert();
+				window.location.reload(true);
 			}else if(success.trim() == 0){
-				console.log('success');
 				init_alert();
-				// window.location.reload(true);
 			}
 			console.log(success);
 		},

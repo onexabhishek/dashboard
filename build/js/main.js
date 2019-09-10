@@ -11,8 +11,8 @@ function insert_form(url,type,table){
 		data:$(".form-insert").serializeArray(),
 		success:(success)=>{
 			if(success.trim() == 1){
-				init_alert();
-				window.location.reload(true);
+				// init_alert();
+				window.location.reload();
 			}else if(success.trim() == 0){
 				init_alert();
 			}

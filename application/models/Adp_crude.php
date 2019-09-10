@@ -15,7 +15,7 @@ class Adp_crude extends CI_Model{
 			return false;
 		}else{
 			$response = $this->db->insert($table,$array);
-			$this->session->set_flashdata('alert',['type'=>'success','msg'=>$array['slug'].' Category Slug already exists','last_action_id'=>$this->db->insert_id()]);
+			$this->session->set_flashdata('alert',['type'=>'success','msg'=>$array['slug'].' Category added successfully','last_action_id'=>$this->db->insert_id()]);
 			return $response;
 		}
 		

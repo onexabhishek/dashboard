@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages';
 $route['category/add'] = 'category/add';
 $route['category/add_category'] = 'category/add_category';
+$route['category/(:any)'] = 'category/index/$1';
 $route['category'] = 'category/index';
 $route['adp'] = 'adp/plugins';
 $route['adp/(:any)'] = 'adp/$1';

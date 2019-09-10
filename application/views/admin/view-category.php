@@ -127,7 +127,7 @@
        $table_data['title'] ='Categories';
       $table_data['table_columns'] = ['Name','Slug','Parent Category','Action'];
       $table_data['data_keys'] = ['name','slug','parent_category'];
-      $table_data['action_keys'] = ['<a href="./view" class="btn btn-primary"><i class="fa fa-eye"></i></a> &nbsp;<a href="./view" class="btn btn-danger"><i class="fa fa-trash"></i></a>'];
+      $table_data['action_keys'] = ['<a href="./view/$slug" class="btn btn-primary"><i class="fa fa-eye"></i></a> &nbsp;<a href="./view" class="btn btn-danger"><i class="fa fa-trash"></i></a>'];
        $this->view('admin/templates/datatable',$table_data); ?>
 
 

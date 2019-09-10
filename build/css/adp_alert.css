@@ -49,3 +49,19 @@
 .alrt-bg-info{
     background-color: #17a2b8 !important;
 }
+.alert-box .alert-success {
+    background: #fff !important;
+    border: 0;
+    border-left: 5px solid green;
+    color: green;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    border-radius: 0;
+}
+.alert-box .alert-danger {
+    background: #fff !important;
+    border: 0;
+    border-left: 5px solid red;
+    color: red;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    border-radius: 0;
+}

@@ -49,7 +49,7 @@
                            //    }
                               
                            // }
-                          echo '<td><a href="./category/'.$row['slug'].'" class="btn btn-primary"><i class="fa fa-eye"></i></a> &nbsp;<a href="./category/'.$row['slug'].'"class="btn btn-danger"><i class="fa fa-trash"></i></a></td></tr>';
+                          echo '<td><a href="./category/'.$row['id'].'" class="btn btn-primary"><i class="fa fa-eye"></i></a> &nbsp;<a href="./category/'.$row['id'].'"class="btn btn-danger"><i class="fa fa-trash"></i></a></td></tr>';
                         }
                         
 

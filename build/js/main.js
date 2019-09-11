@@ -4,11 +4,35 @@ $(".form-insert").on('submit',(e)=>{
 		// console.log(e.target.action);
 		insert_form(e.target.action,e.target.method,e.target.getAttribute('data-target'));
 	});
+$(".form-update").on('submit',(e)=>{
+		e.preventDefault();
+		// console.log(e.target.action);
+		update_form(e.target.action,e.target.method,e.target.getAttribute('data-target'));
+});
 function insert_form(url,type,table){
 	$.ajax({
 		type:type,
 		url:url+'?form_insert=true&table='+table,
 		data:$(".form-insert").serializeArray(),
+		success:(success)=>{
+			if(success.trim() == 1){
+				// init_alert();
+				window.location.reload();
+			}else if(success.trim() == 0){
+				init_alert();
+			}
+			console.log(success);
+		},
+		error:(err)=>{
+			console.log(err);
+		}
+	})
+}
+function update_form(url,type,table){
+	$.ajax({
+		type:type,
+		url:url+'?form_update=true&table='+table,
+		data:$(".form-update").serializeArray(),
 		success:(success)=>{
 			if(success.trim() == 1){
 				// init_alert();
@@ -81,3 +105,17 @@ let proceed = false;
 function gen_err_container(dom,i){
 dom.eq(i).after(`<div class="adp_error_container" id="validationErr${i}"></div>`);
 }
+
+$('.unique').on('keyup',()=>{
+	let table = $(this).attr('unique-in');
+	let feild = $(this).attr('name');
+	let value = $(this).val();
+	$.ajax({
+		type:'POST',
+		url:'./adp/validate',
+		data:JSON.stringify({table:table,feild:feild,value:value}),
+		success:(success)=>{
+			console.log(success);
+		}
+	})
+})

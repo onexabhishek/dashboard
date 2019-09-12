@@ -44,4 +44,9 @@ class Adp extends CI_Controller{
 	public function init_alert(){
 		echo isset($_SESSION['alert']) ? json_encode($_SESSION['alert']) : '';
 	}
+	public function validate(){
+		$data = $this->load->model('adp_crude');
+		$res = $this->adp_crude->check_unique($_POST);
+		// echo !$res ? '1' : '0';
+	}
 }

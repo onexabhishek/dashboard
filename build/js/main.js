@@ -106,16 +106,44 @@ function gen_err_container(dom,i){
 dom.eq(i).after(`<div class="adp_error_container" id="validationErr${i}"></div>`);
 }
 
-$('.unique').on('keyup',()=>{
-	let table = $(this).attr('unique-in');
-	let feild = $(this).attr('name');
-	let value = $(this).val();
-	$.ajax({
-		type:'POST',
-		url:'./adp/validate',
-		data:JSON.stringify({table:table,feild:feild,value:value}),
-		success:(success)=>{
-			console.log(success);
+
+// Unique Element Initial Value Container
+let unique_values = {};
+$.each($('.unique'),(index,value)=>{
+	unique_values[$('.unique').eq(index).attr('id')] = $('.unique').eq(index).val();
+
+})
+// console.log(unique_values);
+$('.unique').on('keyup',(e)=>{
+	e.preventDefault();
+	let table = e.target.getAttribute('unique-in');
+	let feild = e.target.getAttribute('name');
+	let value = e.target.value;
+	let id = e.target.id;
+	if(value != unique_values[id]){
+	$.post('../adp/validate',{table:table,feild:feild,value:value},(success)=>{
+		console.log(success);
+		if(success.trim() == '1'){
+			// $('#'+id).hide();
+			form_alert(id,'danger',value+' already taken');
+			$('.adp-submit').addClass('disabled');
+		}else{
+			$('.adp-submit').removeClass('disabled');
 		}
 	})
+}
+
 })
+
+function json_to_params(val){
+	Object.keys(val).map(function(k) {
+    return encodeURIComponent(k) + '=' + encodeURIComponent(val[k])
+}).join('&')
+}
+
+function form_alert(id,priority,msg){
+	if(!($('#alert'+id).length > 0)){
+		$('#'+id).after(`<div class="adp-form-alert" id="alert${id}"></div>`);
+	}
+	$('#alert'+id).html(`<p class="text-${priority}">${msg}</p>`);
+}

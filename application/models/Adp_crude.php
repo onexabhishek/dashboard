@@ -21,18 +21,18 @@ class Adp_crude extends CI_Model{
 		
 	}
 	public function updateRow($table,$array,$where){
-		if(!$this->is_unique($table,'name',$array['name'])){
-			$this->session->set_flashdata('alert',['type'=>'danger','msg'=>$array['name'].' Category Name already exists']);
-			return false;
-		}elseif(!$this->is_unique($table,'slug',$array['slug'])){
-			$this->session->set_flashdata('alert',['type'=>'danger','msg'=>$array['slug'].' Category Slug already exists']);
-			return false;
-		}else{
+		// if(!$this->is_unique($table,'name',$array['name'])){
+		// 	$this->session->set_flashdata('alert',['type'=>'danger','msg'=>$array['name'].' Category Name already exists']);
+		// 	return false;
+		// }elseif(!$this->is_unique($table,'slug',$array['slug'])){
+		// 	$this->session->set_flashdata('alert',['type'=>'danger','msg'=>$array['slug'].' Category Slug already exists']);
+		// 	return false;
+		// }else{
 			$response = $this->db->where($where);
 			$response = $this->db->update($table,$array);
 			$this->session->set_flashdata('alert',['type'=>'success','msg'=>$array['slug'].' Category updated successfully']);
 			return $response;
-		}
+		// }
 		
 	}
 	public function getRows($table,$clause=FALSE){
@@ -58,6 +58,15 @@ class Adp_crude extends CI_Model{
 			$query = $this->db->get($table);
 		}
 		return $query->first_row();
+	}
+	public function check_unique($array){
+		if(!$this->is_unique($array['table'],$array['feild'],$array['value'])){
+			$this->session->set_flashdata('alert',['type'=>'danger','msg'=>$array['value'].' Already Exists']);
+			echo '1';
+			return false;
+
+		}
+		echo '0';
 	}
 }
 

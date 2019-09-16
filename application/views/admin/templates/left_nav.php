@@ -35,6 +35,14 @@
                   </ul>
                </li>
                <li>
+                  <li>
+                  <a><i class="fa fa-home"></i>Manage Exams<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                     <li><a href="<?php echo base_url(); ?>exams/questions">Querstions</a></li>
+                     <li><a href="<?php echo base_url(); ?>services">Manage Services</a></li>
+                  </ul>
+               </li>
+               <li>
                   <a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                      <li><a href="form.html">General Form</a></li>

@@ -4885,3 +4885,11 @@ ul.notifications {
 .dataTables_wrapper>.row {
 	overflow: auto!important
 }
+
+/*starting adp*/
+.adp-form-block label {
+    color: #333;
+    margin-bottom: 1rem !important;
+    display: block;
+    text-align: left !important;
+}

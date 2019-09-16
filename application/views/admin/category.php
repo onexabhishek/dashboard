@@ -61,12 +61,12 @@
                if(isset($selected_data) && !empty($selected_data)){
                   // var_dump($selected_data);
                ?>
-                  <form action="<?php echo site_url('./category/update_category'); ?>" method="POST" class="form-horizontal form-label-left form-update adp-validate-form" data-target="adp_post_category" novalidate>
+                  <form action="<?php echo site_url('./category/update_category'); ?>" method="POST" class="form-horizontal form-label-left form-update adp-validate-form" data-target="adp_question_category" novalidate>
                      <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                           <input type="text" id="category-name" name="name" value="<?=$selected_data->name;?>"  data-validate="notEmpty" unique-in="adp_post_category" required="required" class="form-control col-md-7 col-xs-12 adp-validate unique">
+                           <input type="text" id="category-name" name="name" value="<?=$selected_data->name;?>"  data-validate="notEmpty" unique-in="adp_question_category" required="required" class="form-control col-md-7 col-xs-12 adp-validate unique">
                         </div>
                      </div>
                      <div class="form-group">
@@ -131,7 +131,7 @@
                   }elseif(empty($selected_data)){
 
                ?>
-                <form action="<?php echo site_url('./category/add_category'); ?>" method="POST" class="form-horizontal form-label-left form-insert adp-validate-form" data-target="adp_post_category" novalidate>
+                <form action="<?php echo site_url('./category/add_category'); ?>" method="POST" class="form-horizontal form-label-left form-insert adp-validate-form" data-target="adp_question_category" novalidate>
                      <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category Name <span class="required">*</span>
                         </label>

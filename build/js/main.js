@@ -1,23 +1,34 @@
 let siteUrl = window.location.protocol+'//'+window.location.hostname+'/dashboard/';
+
+$(".form-create-question").on('submit',(e)=>{
+		e.preventDefault();
+		// console.log(e.target.action);
+		insert_form(e.target,$(".form-create-question").serializeArray(),e.target.getAttribute('next-step'));
+});
+
 $(".form-insert").on('submit',(e)=>{
 		e.preventDefault();
 		// console.log(e.target.action);
-		insert_form(e.target.action,e.target.method,e.target.getAttribute('data-target'));
+		insert_form(e.target,$(".form-insert").serializeArray());
 	});
 $(".form-update").on('submit',(e)=>{
 		e.preventDefault();
 		// console.log(e.target.action);
-		update_form(e.target.action,e.target.method,e.target.getAttribute('data-target'));
+		update_form(e.target,$(".form-insert").serializeArray());
 });
-function insert_form(url,type,table){
+function insert_form(e,data,next=false){
 	$.ajax({
-		type:type,
-		url:url+'?form_insert=true&table='+table,
-		data:$(".form-insert").serializeArray(),
+		type:e.method,
+		url:e.action+'?form_insert=true&table='+e.getAttribute('data-target'),
+		data:data,
 		success:(success)=>{
 			if(success.trim() == 1){
 				// init_alert();
+				if(next){
+					window.location.href = window.location.href+'#'+next;
+				}else{
 				window.location.reload();
+			}
 			}else if(success.trim() == 0){
 				init_alert();
 			}
@@ -28,11 +39,11 @@ function insert_form(url,type,table){
 		}
 	})
 }
-function update_form(url,type,table){
+function update_form(e,data){
 	$.ajax({
-		type:type,
-		url:url+'?form_update=true&table='+table,
-		data:$(".form-update").serializeArray(),
+		type:e.method,
+		url:e.action+'?form_update=true&table='+e.getAttribute('data-target'),
+		data:data,
 		success:(success)=>{
 			if(success.trim() == 1){
 				// init_alert();
@@ -128,6 +139,7 @@ $('.unique').on('keyup',(e)=>{
 			form_alert(id,'danger',value+' already taken');
 			$('.adp-submit').addClass('disabled');
 		}else{
+			form_alert(id,'','');
 			$('.adp-submit').removeClass('disabled');
 		}
 	})
@@ -147,3 +159,4 @@ function form_alert(id,priority,msg){
 	}
 	$('#alert'+id).html(`<p class="text-${priority}">${msg}</p>`);
 }
+

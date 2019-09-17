@@ -28,4 +28,9 @@ class Exams extends CI_Controller{
 		$this->load->view('admin/add_question',$data);
 		$this->load->view('admin/templates/footer',$script_data);
 	}
+	public function insert_question(){
+		$this->load->model('adp_crude');
+		$data = $this->adp_crude->insertRow($_REQUEST['table'],$_POST);
+		echo !$data ? '0' : '1';
+	}
 }

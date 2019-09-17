@@ -45,17 +45,17 @@
             <div class="x_panel">
 			   <div class="x_content">
 			      <br />
-			      <form class="form-horizontal adp-form-block">
+			      <form class="form-horizontal form-create-question adp-validate-form adp-form-block" action="<?=site_url('./exams/insert_question');?>" data-target="adp_questions" next-step="add_question" method="POST">
 			         <div class="form-group">
 			            <label class="control-label">Question Name</label>
 			            <div class="">
-			               <input type="text" name="name" class="form-control" placeholder="Default Input">
+			               <input type="text" name="name" id="name" class="form-control adp-validate unique" unique-in="adp_questions" placeholder="Default Input">
 			            </div>
 			         </div>
 			         <div class="form-group">
-			            <label class="control-label">Select</label>
+			            <label class="control-label">Category</label>
 			            <div class="">
-			               <select class="form-control">
+			               <select name="category" class="form-control">
 			               	<option value="">--None--</option>
 			               	<?php
 			               	foreach ($categories as $category) {
@@ -71,7 +71,7 @@
 			         <div class="form-group">
 			            <label class="control-label">Question Type </label>
 			            <div class="">
-			               <select class="form-control">
+			               <select class="form-control" name="type">
 			                  <option value="text">Text</option>
 			                  <option value="audio">Audio</option>
 			                  <option value="image">Image</option>
@@ -87,7 +87,7 @@
 			            <div class="">
 			               <button type="button" class="btn btn-primary">Cancel</button>
 			               <button type="reset" class="btn btn-primary">Reset</button>
-			               <button type="submit" class="btn btn-success">Submit</button>
+			               <button type="submit" class="btn btn-success">Next</button>
 			            </div>
 			         </div>
 			      </form>
@@ -96,9 +96,9 @@
          </div>
          <div class="col-md-3 col-sm-12 col-xs-12">
 	         <ul class="nav nav-tabs tabs-right">
-				<li class="active"><a href="#home-r" data-toggle="tab">Home</a>
+				<li class="active"><a href="#create_question" data-toggle="tab">Create Question</a>
 				</li>
-				<li><a href="#profile-r" data-toggle="tab">Profile</a>
+				<li><a href="#add_question" data-toggle="tab">Add Question</a>
 				</li>
 				<li><a href="#messages-r" data-toggle="tab">Messages</a>
 				</li>

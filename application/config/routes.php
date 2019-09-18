@@ -57,6 +57,7 @@ $route['category/(:any)'] = 'category/index/$1';
 $route['category'] = 'category/index';
 $route['exams/questions'] = 'exams/index';
 $route['exams/add_question'] = 'exams/add_question';
+$route['exams/add_question/(:any)'] = 'exams/add_question/$1';
 $route['adp/(:any)'] = 'adp/$1';
 $route['adp'] = 'adp/plugins';
 $route['404_override'] = '';

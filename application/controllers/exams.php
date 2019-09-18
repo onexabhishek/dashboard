@@ -14,7 +14,7 @@ class Exams extends CI_Controller{
 		$this->load->view('admin/questions',$data);
 		$this->load->view('admin/templates/footer',$script_data);
 	}
-	public function add_question(){
+	public function add_question($id=false){
 		$this->load->model('adp_model');
 		$this->load->model('adp_crude');
 		$styles = $this->adp_model->load_plugin(['datatables.net-bs','datatables.net-buttons-bs','datatables.net-fixedheader-bs','datatables.net-responsive-bs','datatables.net-scroller-bs','switchery'],'css');
@@ -24,6 +24,12 @@ class Exams extends CI_Controller{
 		$script_data['scripts'] = $script;
 		$data['title'] = 'Add Question';
 		$data['categories'] = $this->adp_crude->getRows('adp_question_category',['where'=>['is_public'=>1]]);
+		if($id && $id == 'question'){
+			$data['question'] = true;
+			$data['id'] = $id;
+		}else{
+			$data['create_question'] = true;
+		}
 		$this->load->view('admin/templates/header',$meta);
 		$this->load->view('admin/add_question',$data);
 		$this->load->view('admin/templates/footer',$script_data);

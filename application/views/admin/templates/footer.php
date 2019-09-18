@@ -43,6 +43,10 @@ if(isset($scripts)){
 <script src="<?php echo base_url(); ?>build/js/custom.min.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
 <script src="<?php echo base_url(); ?>build/js/plugins.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
 <script src="<?php echo base_url(); ?>build/js/adp_alert.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
+
+<link href='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css' rel='stylesheet'>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js'></script>
+
 <script src="<?php echo base_url(); ?>build/js/main.js" type="59f3a9c0ff1fd00403ef800b-text/javascript"></script>
 <script src="<?php echo base_url(); ?>build/js/rocket-loader.min.js" data-cf-settings="59f3a9c0ff1fd00403ef800b-|49" defer=""></script></body>
 

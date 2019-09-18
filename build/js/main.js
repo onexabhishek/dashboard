@@ -6,16 +6,22 @@ $(".form-create-question").on('submit',(e)=>{
 		insert_form(e.target,$(".form-create-question").serializeArray(),e.target.getAttribute('next-step'));
 });
 
+
+
 $(".form-insert").on('submit',(e)=>{
 		e.preventDefault();
 		// console.log(e.target.action);
 		insert_form(e.target,$(".form-insert").serializeArray());
 	});
+
+
 $(".form-update").on('submit',(e)=>{
 		e.preventDefault();
 		// console.log(e.target.action);
 		update_form(e.target,$(".form-insert").serializeArray());
 });
+
+
 function insert_form(e,data,next=false){
 	$.ajax({
 		type:e.method,
@@ -25,7 +31,7 @@ function insert_form(e,data,next=false){
 			if(success.trim() == 1){
 				// init_alert();
 				if(next){
-					window.location.href = window.location.href+'#'+next;
+					window.location.href = window.location.href+'/'+next;
 				}else{
 				window.location.reload();
 			}
@@ -160,3 +166,31 @@ function form_alert(id,priority,msg){
 	$('#alert'+id).html(`<p class="text-${priority}">${msg}</p>`);
 }
 
+// Question Controoler
+$('.question_type').on('change',()=>{
+	if($(this).val() == 'check'){
+		// $('.answer-container').html('');
+	}else if($(this) == 'radio'){
+		$('.answer-container').html('<button class="btn btn-default" data-type="radio">Add Option</button>');
+	}else{
+		$('.answer-container').html('<button class="btn btn-default" data-type="check">Add Option</button>');
+	}
+});
+
+
+$('#question_editor').summernote({
+        placeholder: 'Add Description..',
+        tabsize: 2,
+        height:200,
+        callbacks:{
+            onBlur:function(){
+                $('#question_value').val($(this).summernote("code"));
+            }
+        },
+    codemirror: { // codemirror options
+    theme: 'monokai'
+  }
+});
+
+// $('#summernote').summernote("code"); 
+// $('#summernote').summernote("code",`<?=isset($respage->des) ? $respage->des : '';?>`); 

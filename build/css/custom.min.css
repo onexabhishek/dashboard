@@ -4893,3 +4893,13 @@ ul.notifications {
     display: block;
     text-align: left !important;
 }
+
+.answer-container .ans-wrapper {
+    padding: 30px 10px;
+    display: block;
+}
+.answer-container .ans-wrapper .form-group {
+    width: 50%;
+    display: block;
+    float: left;
+}
